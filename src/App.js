@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Link } from 'react-router';
+import { Link, Match } from 'react-router';
+import GamesPage from './GamesPage';
 import './App.css';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         <p className="App-intro">
           <Link to="/games">Games</Link>
         </p>
+        <Match pattern="/games" component={GamesPage} />
       </div>
     );
   }
