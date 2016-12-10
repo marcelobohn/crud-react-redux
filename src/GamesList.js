@@ -11,7 +11,7 @@ export default function GamesList({ games }) {
 
   return (
     <div>
-      {games instanceof Object || games.length === 0 ? emptyMessage : gamesList}
+      {games.length === 0 ? emptyMessage : gamesList}
     </div>
   );
 }
