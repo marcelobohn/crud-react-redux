@@ -19,7 +19,7 @@ GamesPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    games: state.games
+    games: state.games instanceof Object ? [] : state.games
   }
 }
 
