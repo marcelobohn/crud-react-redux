@@ -7,6 +7,19 @@ export function setGames(games) {
   }
 }
 
+export function saveGame(data) {
+  return dispatch => {
+    return fetch('/api/games/', {
+      method: 'post',
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+  }
+
+}
+
 export function fetchGames() {
   return dispatch => {
     fetch('/api/games')

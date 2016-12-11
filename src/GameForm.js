@@ -1,5 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { saveGame } from './actions';
 
 class GameForm extends React.Component {
   state = {
@@ -33,7 +35,6 @@ class GameForm extends React.Component {
 
     const isValid = Object.keys(errors).length === 0;
     if (isValid) {
-
       const { title, cover } = this.state;
       this.setState({ loading: true });
       this.props.saveGame({ title, cover })
@@ -69,7 +70,7 @@ class GameForm extends React.Component {
           </div>
 
           <div className="field">
-            { this.state.cover !== '' && <img src={this.state.cover} alt="cover" className="ui small bordered image"/> }
+            { this.state.cover.length > 10 && <img src={this.state.cover} alt="cover" className="ui small bordered image"/> }
           </div>
 
           <div className="field">
@@ -81,5 +82,4 @@ class GameForm extends React.Component {
   }
 }
 
-
-export default GameForm
+export default connect(null, { saveGame })(GameForm);
