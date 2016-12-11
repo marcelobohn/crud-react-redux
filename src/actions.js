@@ -1,5 +1,15 @@
 export const SET_GAMES = 'SET_GAMES';
 
+function handleResponse(response) {
+  if (response.ok) {
+    return response.json();
+  } else {
+    let error = new Error(response.statusText);
+    error.response = response;
+    throw error;
+  }
+}
+
 export function setGames(games) {
   return {
     type: SET_GAMES,
@@ -15,7 +25,7 @@ export function saveGame(data) {
       headers: {
         "Content-Type": "application/json"
       }
-    })
+    }).then(handleResponse);
   }
 
 }
